@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm=#11cku6rqk*y3^(qfznfw%w6(=s*1j3d)a+^c5y1m&brw1eg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
@@ -140,7 +140,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_REDIRECT_URL = 'userhome'
-SECURE_SSL_REDIRECT = False # apply to true in order to activate https (Only use for production)
+SECURE_SSL_REDIRECT = True # apply to true in order to activate https (Only use for production)
 
 GRAPH_MODELS = {
       'all_applications': True,

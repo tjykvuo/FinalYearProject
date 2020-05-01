@@ -82,12 +82,8 @@ WSGI_APPLICATION = 'projectsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'mysql-instance-6100',
-        'USER': 'y3_project_admin',
-        'PASSWORD': 'amazon_mysql_server',
-        'HOST': 'mysql-instance-6100.cgjv7iqmjcgi.eu-west-2.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

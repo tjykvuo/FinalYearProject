@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-db",
+      "appliesTo": "db.sqlite3",
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-aboutproject",
+      "appliesTo": "app/templates/app/aboutproject.html",
+      "type": "launch"
+    }
+  ]
+}

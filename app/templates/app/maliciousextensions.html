@@ -1,0 +1,125 @@
+{% extends "app/sitelayout/layout.html" %}
+{% block content %}
+{% load staticfiles %}
+
+<h1>Malicious Extensions</h1>
+<div class="container">
+    <div class="container">
+        <br />
+        <h2>.EXE Executable Files</h2>
+        <img src="{% static "images/EXE.png" %}" alt="exe-executable-icon"></>
+        <br />
+        <h5>
+            Being the most often associated files with malware, the executable files are notorious for being employed as malicious e-mail attachments.
+            This method has become more and more outdated as most e-mail providers block these attachments.
+            The executable files are often spread as fake setups, updates or other types of seemingly legitimate programs with the malicious code built-in.
+            They are also archived to further avoid antivirus detection.
+            However, the executable files are crucial when it comes to deciding what the malware will do,
+            this is because they have numerous functions that perform the actual malicious activities after the infection has been completed.
+            They are associated with the primary payload of different malware more often than being used as an actual infection file.
+            Although they may not be suspicious do not count that an .exe may not be malicious.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>Microsoft Office File Types</h2>
+        <img src="{% static "images/DOC.png" %}" alt="word-document-icon"></>
+        <h5>
+           Microsoft office files such as .DOC, .DOCM and .DOCX are popular formats to spread viruses. 
+           The main reason for the format popularity is the ability to embed malicious macros into a document; this is done to 
+           bypass security systems such as antivirus and email attachment protections if they are properly concealed. The part 
+           which the attacker would find difficult is convincing the victim to click the 'Enable Content' button; they will normally
+           include instructions within the document.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>Web Application Files</h2>
+        <img src="{% static "images/HTML.png" %}" alt="web-application-icon"></>
+        <h5>
+            File types such as .HTML, .HTA and .HTM have been used to enable ransomware attacks in the past.
+            The files themselves are HTML web applications that usually lead to a foreign host, from which the payload of the malware is downloaded onto the computer of the victim.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.JS and .JAR Files</h2>
+        <img src="{% static "images/JS_JAR.png" %}" alt="javascript-&-java-icon"></>
+        <h5>
+            .JS and .JAR files are used to distribute malicious JavaScript code which is then used to infect a virus into a computer system.
+            These infections can occur without the victim's knowledge by clicking on a malicious link.
+            .JS files have been used for quite some time and its popularity has been credited to how ransomware can infect its victims with one campaign in particular being the Locky ransomware.
+        </h5> 
+        </br>
+        <h5>
+            JAR files are archives used in Java powered software for libraries or for stand alone applications; although the technology is around 25 years old it is still used by malware authors
+            but not as much as JS because of the trouble of Java requiring a Java Runtime Environment (JRE) file to be installed and not many computers satisfy this requirement. For those authors who do
+            decide to use this format; they can take advantage of Java's cross-platform reach to infect a great number of targets with a single malicious file. JAR files also have a lower chance of being
+            detected due to it being sometimes ignored by security software. 
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.VBS Script Files</h2>
+        <img src="{% static "images/VBS.png" %}" alt="vbs-icon"></>
+        <h5>
+            Visual Basic Scripts are dangerous because they have been associated with numerous threats such as Locky and Cerber which used the format in their email campaigns, .vbs has also seen extensive
+            use in trojan infections. The main reason for malicious use of this format is speed of infection and a particularly skilled hacker is able to use the Visual Basic environment to create powerful
+            viruses. A Visual Basic Script is very easily obscured and can pass as a legitimate email messsage
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.PDF Adobe Reader Files</h2>
+        <img src="{% static "images/PDF.png" %}" alt="pdf-reader-icon"></>
+        <h5>
+            Cybercriminals tend not to use PDF files with embedded scripts and viruses because of its tedancy to crash however if the attacker sends the file as a spam message; it can contain documents
+            such as microsoft office files which will themselves host the malicious files. Document inception has remained an effective strategy against inexperienced victims. The way it works is that 
+            the victim opens the malicous PDF file which has the word document embedded in it; the PDF would prompt the victim to download the malicious .docm file, which then causes infection.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.SFX Archive Files</h2>
+        <img src="{% static "images/SFX.png" %}" alt="sfx-archive-icon"></>
+        <br />
+        <h5>
+            Self-Extracting Archive files are used by many strains of malware in order to infect devices; they work in a similar way to setup programs that are used by the Windows Operating
+            System because they archive malicious payloads of a virus. When the virus is executed, it can be manipulated to extract and employ the payload in the background. More advanced SFX 
+            files can be programmed so that they are self deleting once their task is complete.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.BAT Batch Files</h2>
+        <img src="{% static "images/BAT.png" %}" alt="batch-file-icon"></>
+        <h5>
+            Batch files are command-containing files which are not so commonly faced by victims however it is widely used by attackers due to the access to Windows Command Prompt and its subsequent 
+            potential impact on the computer. If a malware author knows what they are doing; they can manipulate the batch file to insert administrative commands to perform a variety of malicious
+            actions from deleting files to connecting to servers and downloading malware directly to the device.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.DLL Files</h2>
+        <img src="{% static "images/DLL.png" %}" alt="dynamic-link-library-icon"></>
+        <h5>
+            Also known as a Dynamic Link Library file; DLL files are typically used by Microsoft to provide library support for its Windows Operating System however malware authors and hackers have 
+            discovered techniques for infiltrating compromised functions and viruses into the DLL file itself. This results in the malware performing tasks which as deleting files, carrying out 
+            modifications to the Windows Registry Editor as well as executing applications and commands as an administrator. A common symptom is DLL error messages that appear on the compromised device
+            however viruses like these will normally be prepared with additional components such as a rootkit to prevent errors being seen by the victim.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.TMP Temporary Files</h2>
+        <img src="{% static "images/TMP.png" %}" alt="temporary-file-icon"></>
+        <h5>
+            Temporary files hold data on a computer while the user is interacting with a application. cybercriminals use TMPs to store information that can aid an infection. Data that is related to what the
+            malware is doing and will be used to allow the virus to collect information  which can be then relayed to the cybercriminal who is directing the infection all without the victim noticing. Removing
+            a TMP file may damage the virus however more sophisticated viruses will normally not allow a user to do so or it may create a backup TMP file.
+        </h5>
+    </div>
+    <div class="container">
+        <h2>.PY Python Files</h2>
+        <img src="{% static "images/PY.png" %}" alt="python-file-icon"></>
+        <h5>
+            Python files are typically used when sophisticated threats are used such as ransomware as the language allows complex programs to be developed relatively quick and easily. Modules written in Python
+            can be used to encrypt files on a device (documents, images, videos) make them inaccessable. Previous analysis has identified that malware can be written entirely in python so that the virus uses
+            the language for everything.
+        </h5>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\static",
+    "\\app\\templates",
+    "\\app\\templates\\app",
+    "\\app\\templates\\app\\video",
+    "\\projectsite"
+  ],
+  "SelectedNode": "\\app\\templates\\app\\video\\iotvideo.html",
+  "PreviewInSolutionExplorer": false
+}

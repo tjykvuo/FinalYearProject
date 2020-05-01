@@ -1,0 +1,12 @@
+{% extends "app/sitelayout/layout.html" %}
+{% block content %}
+    <div class="page-container">
+        <div container>
+            <div class="jumbotron">
+                <h2>Welcome {{request.user.username}}</h2>
+            </div>
+
+        </div>
+        <a href="{% url 'userhome' %}">Back to Main Menu</a>
+    </div>
+{% endblock %}

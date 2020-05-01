@@ -1,0 +1,69 @@
+{% extends "app/sitelayout/layout.html" %}
+{% load i18n %}
+{% load quiztag %}
+{% block title %} {{ quiz.title }}{% endblock %}
+{% block description %} {% trans "Quiz results for" %}{{ quiz.title }} {% endblock %}
+
+{% block content %}
+
+{% if previous.answer %}
+
+<p class="muted"><small>{% trans "The previous question" %}:</small></p>
+<p>{{ previous.quizanswers }}</p>
+<p>{% trans "Your answer was" %}<strong>{{ previous.previous_outcome|yesno:"right, wrong" }}</strong></p>
+{% include 'right_answer.html' %}
+<p><strong>{% trans "Description" %}:</strong></p>
+<div class="well" style="background-color:#fcf8e3;">
+    <p>{{ previous.previous_question.questdescript }}</p>
+</div>
+<hr>
+{% endif %}
+
+{% if max_score %}
+
+<div>
+    <h2>{% trans "Quiz Results" %}</h2>
+    <p>
+        <small class="muted">{% trans "Quiz Title" %}:</small>
+        <strong>{{ quiz.title }}</strong>
+    </p>
+    <p class="lead">
+        {% trans "You answered" %}{{ result }} {% trans "questions correctly out of " %}{{ max_score }}
+    </p>
+    <p class="lead">
+        {% trans "Percentage" %}:{{ percent }}
+    </p>
+    {% if quiz.pass_mark %}
+    <hr>
+    <p class="lead">{{ attempt.result_message }}</p>
+    <hr>
+
+    {% if user.is_authenticated %}
+    <p>{% trans "The result will be stored for review" %}</p>
+    {% endif %}
+</div>
+{% endif %}
+<hr>
+{% if possible %}
+<p class="lead">
+    {% trans "Your score is" %} {{ session }} out of {{ possible }}
+</p>
+<hr>
+{% endif %}
+{% if questions %}
+{% for question in questions %}
+<p class="lead">
+    {{ question.entans }}
+</p>
+{% right_answer_for_all question %}
+{% if question.user_answer %}
+<p>{% trans "Your answer" %}: {{ question|answer_choice_to_string:question.user_answer }}</p>
+{% endif %}
+<p><strong>{% trans "Description" %}:</strong></p>
+<div class="well" style="background-color: #fcf8e3;">
+    <p>{{ question.questdescript|safe }}</p>
+</div>
+<hr>
+{% endfor %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "app/sitelayout/basiclayout.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="LoginForm">
+            <form method="post" class="form-horizontal">
+                {% csrf_token %}
+                <h4>Login</h4>
+                <hr />
+                <div class="form-group">
+                    <label for="id_username" class="col-md-2 control-label">User name</label>
+                    <div class="col-md-10">
+                        {{form.username}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="id_password" class="col-md-2 control-label">Password</label>
+                    <div class="col-md-10">
+                        {{form.password}}
+                    </div>
+                    <style>
+                        #capslock_warning{display:none; color:red}
+                    </style>
+                    <p id="capslock_warning">WARNING CAPS LOCK IS ON</p>
+                    <script>
+                        var input =
+                            document.getElementById("id_password");
+                        var text =
+                            document.getElementById("capslock_warning");
+                        input.addEventListener("keyup", function (event) {
+                            if
+                                (event.getModifierState("CapsLock")) {
+                                text.style.display = "block";
+                            } else {
+                                text.style.display="none"
+                            }
+                        });
+                    </script>
+                </div>
+                <button type="submit">Login</button>
+
+                {% if form.errors %}
+                <p class="validation-summary-error">Your Login Credentials were incorrect, Please Enter Correct Username and Password</p>
+                {% endif %}
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+{% endblock %}

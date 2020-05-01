@@ -1,0 +1,64 @@
+{% extends "app/sitelayout/layout.html" %}
+{% load i18n %}
+{% load quiztag %}
+
+{% block title %} {% trans "User Progress" %} {% endblock %}
+
+{% block content %}
+
+  {% if qtype_scores %}
+
+<h1>Question Scores</h1>
+
+<table>
+    <thread>
+        <tr>
+            <th>{% trans "Quiz Type" %}</th>
+            <th>{% trans "Right Answers" %}</th>
+            <th>{% trans "Wrong Answers" %}</th>
+            <th>%</th>
+        </tr>
+    </thread>
+    <tbody>
+ {% for qtype, value in qtype_scores.items %}
+        <tr>
+            <td>{{qtype}}</td>
+            <td>{{value.0}}</td>
+            <td>{{value.1}}</td>
+            <td>{{value.2}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if attempt_record %}
+
+<hr>
+
+<h1>Previous Attempts</h1>
+<p class="lead"> Here are the results from the quiz</p>
+
+<table class="table table-bordered table-striped">
+    <thread>
+        <tr>
+            <th>{% trans "Quiz Title" %}</th>
+            <th>{% trans "Score" %}</th>
+            <th>{% trans "Possible Score" %}</th>
+            <th>%</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for attempt_record in attempts %}
+        <tr>
+            <td>{{attempt_record.quiz.title}}</td>
+            <td>{{attempt_record.current_score}}</td>
+            <td>{{attempt_record.get_max_score}}</td>
+            <td>{{attempt_record.get_percent_correct}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load quiztag %}
+
+{% block title %} {{ quiz.title }} {% endblock %}
+{% block descriptor %}{{ quiz.title }} - {{ quiz.descriptor }}{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<p>{% trans "You have already attempted this quiz" %}</p>
+{% else %}
+<p>{% trans "This quiz is only accessible to signed in users" %}</p>
+{% endif %}
+{% endblock %}

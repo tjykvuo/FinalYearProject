@@ -1,0 +1,32 @@
+{% load i18n %}
+{% if previous.quizanswers %}
+{% if user_was_wrong %}
+<div class="alert alert-error">
+    <strong>{% trans "You didnt get that one right" %}</strong>
+</div>
+{% endif %}
+
+<table class="table table-striped table-bordered">
+    <tbody>
+        {% for quizanswer in previous.quizanswers %}
+        {% if quizanswer.right %}
+        <tr class="success">
+            <td>{{ quizanswer.entans }}</td>
+            <td><strong>{% trans "Correct" %}</strong></td>
+            {% else %}
+        </tr>
+        <tr>
+            <td>{{ quizanswer.entans }}</td>
+            <td>
+                {% if previous.question_type.MultipleChoice %}
+                {% if quizanswer.id|add:"0" == previous.previous_answer|add:"0"%}
+                {% trans "This was your answer" %}
+                {% endif %}
+                {% endif %}
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}

@@ -1,0 +1,23 @@
+{% extends "app/sitelayout/layout.html" %}
+{% load i18n %}
+{% block title %}{% trans "Questions related to" %}{{ quiztype.quiztype }}{% endblock %}
+{% block content %}
+<h1>{% "Quizzes in the" %}<strong>{{ quiztype.quiztype }}</strong>{% "quiztype" %}</h1>
+
+{% with object_list as quizzes %}
+{% if quizzes %}
+<ul>
+    {% for quiz in quizzes %}
+    <li>
+        <a href="{% url 'take_quiz' quiz_name=projectsite.url %}">
+            {{ quiz.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>{% trans "There are no quizzes available "%}</p>
+
+{% endif %}
+{% endwith %}
+{% endblock %}

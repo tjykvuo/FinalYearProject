@@ -1,0 +1,44 @@
+{% extends quizlayout %}
+
+{% block content %}
+<h2>List of complete quizzes</h2>
+    {% if attempt_list %}
+          <table class="table table-bordered table-striped">
+              <thread>
+                  <tr>
+                      <th>{% "User" %}</th>
+                      <th>{% "Quiz" %}</th>
+                      <th>{% "Completed" %}</th>
+                      <th>{% "Score" %}(%)</th>
+                      <th></th>
+                  </tr>
+              </thread>
+              <tbody>
+                  <tr>
+                      <form action="" method="GET">
+                          <td><input type="text" name="user_filter" /></td>
+                          <td><input type="text" name="quiz_filter" /></td>
+                          <td></td>
+                          <td></td>
+                          <td><button type="submit" class="btn btn-default">{% "Filter" %}</button></td>
+                      </form>
+                  </tr>
+    {% for attempt in attempt_list %}
+                  <tr>
+                      <td>{{attempt.user}}</td>
+                      <td>{{attempt.quiz}}</td>
+                      <td>{{attempt.end|date}}</td>
+                      <td>{{sitting.get_percent_correct}}</td>
+                      <td>
+                          <a href="{% url 'quizscoringfeature' pk = attempt.id %}">
+                              {"View Information"}
+                          </a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+    {% else %}
+      <p>{"There are no matching quizzes"}</p>
+   {% endif %}
+{% endblock %}

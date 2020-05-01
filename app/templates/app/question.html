@@ -1,0 +1,71 @@
+{% extends "app/sitelayout/layout.html" %}
+{% load i18n %}
+{% load quiztag %}
+{% block title %} {{ quiz.title }}{% endblock %}
+{% block description %} {{quiz.title}} - {{quiz.descriptor}} {% endblock %}
+
+{% block content %}
+
+{% if previous.answers %}
+
+<p class="muted"><small>{% trans "The previous question" %}</small></p>
+<p>{{ previous.previous_question }}</p>
+
+{% if previous.previous_outcome %}
+    <div class="alert alert-success">
+    {% else %}
+    <div class="alert alert-warning">
+        {% endif %}
+        <p>
+            <small>
+                {% trans "your answer was" %}
+            </small>
+            <strong>
+                {{ previous.previous_question.|yesno:"right,wrong"}}
+            </strong>
+        </p>
+    </div>
+    {% include 'right_answer.html' %}
+
+    <p><strong>{% trans "Description" %}:</strong></p>
+    <div class="well" style="background-color: #fcf8e3;">
+        <p>{{ previous.previous_question.questdescript }}</p>
+    </div>
+    <hr>
+    {% endif %}
+    <br />
+    {% if question %}
+
+    {% if quizprogression %}
+    <div style="float: right;">
+        {% trans "Question" %} {{ progress.p|add:1 }} {% trans "of" %} {{progress.1}}
+    </div>
+    {% endif %}
+    <p>
+        <small class="muted">{% trans "Question type" %}:</small>
+        <strong>{{ question.quiztype }}</strong>
+    </p>
+    <p class="lead">{{ question.entans }}</p>
+    {% if question.figure %}
+    <img src="{{ question.figure.url }}" alt="{{ question.entans }}" />
+    {% endif %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="question_id" value="{{ question.id }}">
+        <ul class="list-group">
+            {% for quizanswer in form.quizanswers %}
+            <li class="list-group-item">
+                {{ quizanswer }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% if quizcbm.0|add:1 == quizcbm.1 %}
+        <input type="submit" value={% trans "Submit" %} class="btn btn-large btn-block btn-warning">
+        {% else %}
+        <input type="submit" value={% trans "Next" %} class="btn btn-large btn-block btn-warning">
+    </form>
+    {% endif %}
+    <hr>
+
+    {% endblock %}

@@ -1,0 +1,19 @@
+{% extends "app/sitelayout/layout.html" %}
+{% load i18n %}
+{% block title %}
+{{ quiz.title }}
+{% endblock %}
+
+{% block content %}
+<h2>{{ quiz.title }}</h2>
+<h3>{% trans "Quiztype" %}: {{ quiz.quiztype }}</h3>
+{% if quiz.one_quiz_effort %}
+<h4>{% trans "You will only get one attempt at this quiz" %}</h4>
+{% endif %}
+<p>{{ quiz.descriptor }}</p>
+<p>
+    <a href="{% url 'take_quiz' quiz_name=quiz.url %}">
+        {% trans "Start" %}
+    </a>
+</p>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "app/sitelayout/layout.html" %}
+{% block content %}
+<div>
+    <h1>Blog</h1>
+</div>
+
+{% for posts in posts %}
+<div class="post">
+    <div class="date">
+        <p>published: {{ posts.published_date }}</p>
+    </div>
+    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.text|linebreaksbr }}</p>
+</div>
+{% endfor %}
+{% endblock %}

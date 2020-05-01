@@ -1,0 +1,55 @@
+{% extends 'quizlayout.html' %}
+{% load i18n %}
+{% load quiztag %}
+{% block title %}
+{% trans "Result of" %}{{attempt.quiz.title}}{% trans "for" %}{{attempt.user}}
+{% endblock %}
+
+{% block content %}
+<h2>{% trans "Title:" %}{{attempt.quiz.title}}</h2>
+<h3>{% trans "Type": %}{{attempt.quiz.quiztype}}</h3>
+<p>{{attempt.quiz.descriptor}}</p>
+<hr>
+<p>{% trans "User" %}{{attempt.user}}</p>
+<p>{% trans "Complete" %}{{attempt.end|date}}</p>
+<p>{% trans "Score" %}{{attempt.get_percent_correct}}</p>
+
+<table class="table table-bordered table-striped">
+    <thread>
+        <tr>
+            <th>{% trans "Question" %}</th>
+            <th>{% trans "Your answer" %}</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <td>
+                {{question.entans}}
+                {% if question.figure %}
+                <div style="max-width: 100px;">
+                    <img src="{{question.figure.url}}" alt="{{question.figure}}" />
+                </div>
+                {% endif %}
+            </td>
+            <td>{{question|answer_choice_to_string:question.user_answer}}</td>
+            <td>
+                {% if question.id in attempt.get_wrong_questions %}
+                <p>Wrong</p>
+                {% else %}
+                <p>Right</p>
+                {% endif %}
+            </td>
+            <td>
+                <form action="" method="POST">{% csrf_token %}
+                  <input type="hidden" name="qid" value="{{question.id}}">
+                  <button type="submit" class="btn btn-warning">{% trans "Configure whether correct "}</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

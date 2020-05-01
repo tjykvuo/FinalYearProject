@@ -1,0 +1,39 @@
+{% extends "app/sitelayout/layout.html" %}
+{% load i18n %}
+{% load quiztag %}
+{% block title %}{% trans "All Quizzes" %}{% endblock %}
+
+{% block content %}
+<h2>{% trans "List of quizzes" %}</h2>
+{% if quiz_list %}
+<table class="table table-bordered table-striped">
+    <thread>
+        <tr>
+            <th>{% trans "Title" %}</th>
+            <th>{% trans "Type" %}</th>
+            <th>{% trans "Record of Attempts" %}</th>
+            <th>{% trans "Single Attempt" %}</th>
+            <th></th>
+        </tr>
+    </thread>
+    <tbody>
+  {% for quiz in quiz_list %}
+        <tr>
+            <td>{{ quiz.title }}</td>
+            <td>{{ quiz.quiztype }}</td>
+            <td>{{ quiz.attempt_record }}</td>
+            <td>{{ quiz.one_quiz_effort }}</td>
+            <td>
+                <a href="{% url 'quiz_start' slug=quiz.url %}">
+                    {% trans "View Details" %}
+                </a>
+
+            </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>{% trans "There are no quizzes" %}</p>
+{% endif %}
+{% endblock %}

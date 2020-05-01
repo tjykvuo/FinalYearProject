@@ -1,0 +1,81 @@
+{% extends "app/sitelayout/layout.html" %}
+{% block content %}
+{% load static %}
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1>Main Menu</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">What is Malware</div>
+                <div class="panel-body">
+                    <img src="{% static "images/malware.jpg" %}" class="img-responsive" alt="Malware_Image" />
+                </div>
+                <div class="panel-footer">
+                    Identify types of malware to protect an organisation
+                    <a href="{% url 'whatismalwarevideo' %}">Find out More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Advanced Persistent Threat</div>
+                <div class="panel-body">
+                    <img src="{% static "images/man-looking-in-binoculars.jpg" %}" class="img-responsive" alt="APT_Image" />
+                </div>
+                <div class="panel-footer">
+                    Learn how an APT works and ways how you can stop it
+                    <a href="{% url 'aptvideo' %}">Find out More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Internet of Things</div>
+                <div class="panel-body">
+                    <img src="{% static "images/IoTAlexa.jpg" %}" class="img-responsive" alt="IoT_Image" />
+                </div>
+                <div class="panel-footer">
+                    The Internet of Things is considered to be a game changer
+                    <a href="{% url 'iotvideo' %}">Find out More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Scams</div>
+                <div class="panel-body">
+                    <img src="{% static "images/scam_img.jpg" %}" class="img-responsive" alt="scam_Image" />
+                </div>
+                <div class="panel-footer">
+                    Catch the scammers in their tracks
+                    <a href="{% url 'scamsvideo' %}">Find out More</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Hackers</div>
+                <div class="panel-body">
+                    <img src="{% static "images/hacker.png" %}" class="img-responsive" alt="Hacker_Image" />
+                </div>
+                <div class="panel-footer">
+                    Learn about different types of offensive security specialists how they can potentially be of use to an organisation
+                    <a href="{% url 'hackersvideo' %}">Find out More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+{% endblock %}

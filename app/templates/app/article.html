@@ -1,0 +1,18 @@
+{% extends "app/sitelayout/layout.html" %}
+{% block content %}
+{% load staticfiles %}
+
+    <div class="container">
+        <div class="container">
+            <br />
+            <h2>Malicious Extensions</h2>
+            <br />
+            <p>
+                Information about malicious extensions
+            </p>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'maliciousextensionspath' %}"> Malicious Extensions</a>
+            </li>
+        </div>
+    </div>
+{% endblock %}

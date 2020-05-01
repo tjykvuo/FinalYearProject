@@ -1,0 +1,50 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "python",
+      "interpreter": "(default)",
+      "interpreterArguments": "",
+      "scriptArguments": "",
+      "env": {},
+      "nativeDebug": false,
+      "webBrowserUrl": "",
+      "project": "projectsite\\settings.py",
+      "name": "settings.py"
+    },
+    {
+      "type": "python",
+      "interpreter": "(default)",
+      "interpreterArguments": "",
+      "scriptArguments": "",
+      "env": {},
+      "nativeDebug": false,
+      "webBrowserUrl": "",
+      "project": "projectsite\\settings.py",
+      "name": "settings.py(1)"
+    },
+    {
+      "type": "python",
+      "interpreter": "(default)",
+      "interpreterArguments": "",
+      "scriptArguments": "",
+      "env": {},
+      "nativeDebug": false,
+      "webBrowserUrl": "",
+      "project": "app\\models.py",
+      "name": "models.py"
+    },
+    {
+      "type": "python",
+      "interpreter": "(default)",
+      "interpreterArguments": "",
+      "scriptArguments": "",
+      "env": {},
+      "nativeDebug": false,
+      "webBrowserUrl": "",
+      "project": "app\\tests.py",
+      "name": "tests.py"
+    }
+  ]
+}
